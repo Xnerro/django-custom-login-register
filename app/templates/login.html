@@ -1,0 +1,25 @@
+{% extends 'base.html' %} {% load crispy_forms_tags %} {% block main %}
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title text-center">LOG IN</h4>
+
+        <form method="post" class="d-flex flex-column">
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{{ next }}" />
+
+            {{ form.username|as_crispy_field }}
+
+            <!--  -->
+            {{ form.password|as_crispy_field }}
+
+            <button
+                type="submit"
+                class="btn btn-primary btn-block w-50 align-self-center"
+            >
+                Log in
+            </button>
+        </form>
+    </div>
+    <a href="../signup" class="text-center mt-2 pb-3">Sign Up</a>
+</div>
+{% endblock %}
